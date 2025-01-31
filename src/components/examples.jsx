@@ -167,191 +167,88 @@ export const sections = {
       ]
     },
     operadores : {
-        title: "Operadores",
-        theory: (
-          <div>
-            <p>
-              Los operadores en JavaScript son símbolos especiales que realizan operaciones sobre variables y valores.
-              Son fundamentales para realizar cálculos, comparaciones y manipular datos.
-            </p>
+        examples: [
+          {
+            title: "Operadores matemáticos",
+            code: `// Operadores básicos
+    let a = 10;
+    let b = 5;
+    
+    console.log("Suma:", a + b);
+    console.log("Resta:", a - b);
+    console.log("Multiplicación:", a * b);
+    console.log("División:", a / b);
+    console.log("Módulo:", a % b);
+    console.log("Exponente:", a ** b);
+    
+    // Incremento y decremento
+    let contador = 0;
+    console.log("++contador:", ++contador);
+    console.log("contador++:", contador++);
+    console.log("Contador final:", contador);`
+          },
+          {
+            title: "Operadores de comparación",
+            code: `// Comparaciones
+    let x = 5;
+    let y = '5';
+    
+    console.log("== :", x == y);   // Comparación simple
+    console.log("=== :", x === y);  // Comparación estricta
+    console.log("!= :", x != y);
+    console.log("!== :", x !== y);
+    console.log("> :", x > 3);
+    console.log(">= :", x >= 5);`
+          },
+          {
+            title: "Operadores lógicos",
+            code: `// Operadores AND, OR, NOT
+    let edad = 25;
+    let tieneCarnet = true;
+    
+    console.log("AND:", edad >= 18 && tieneCarnet);
+    console.log("OR:", edad < 18 || tieneCarnet);
+    console.log("NOT:", !tieneCarnet);
+    
+    // Uso práctico
+    let puedeConducir = edad >= 18 && tieneCarnet;
+    console.log("¿Puede conducir?:", puedeConducir);`
+          }
+        ],
+        exercises: [
+          {
+            title: "Ejercicio: Calculadora",
+            description: "Crea una calculadora que opere con dos números.",
+            initialCode: `function calculadora(num1, num2, operacion) {
+      // La función debe realizar: suma, resta, multiplicación y división
+      // Debe devolver un mensaje de error si la operación no es válida
+      // o si se intenta dividir por cero
       
-            <div style={{marginTop: '20px'}}>
-              <h4>¿Para qué usamos operadores?</h4>
-              <ul>
-                <li>Realizar operaciones matemáticas y cálculos</li>
-                <li>Comparar valores y tomar decisiones</li>
-                <li>Combinar condiciones lógicas</li>
-                <li>Manipular y asignar valores a variables</li>
-              </ul>
-            </div>
+      // Tu código aquí
+    }
+    
+    console.log(calculadora(10, 5, "suma"));
+    console.log(calculadora(10, 5, "division"));
+    console.log(calculadora(10, 0, "division")); // Error`
+          },
+          {
+            title: "Ejercicio: Validación de edad",
+            description: "Crea un sistema de validación usando operadores lógicos.",
+            initialCode: `function puedeEntrar(edad, acompañado, esVIP) {
+      // Reglas:
+      // - Mayores de 18 pueden entrar siempre
+      // - Entre 13 y 17 solo pueden entrar acompañados
+      // - Los VIP pueden entrar sin importar la edad
       
-            <div style={{marginTop: '20px'}}>
-              <h4>Tipos de operadores:</h4>
-              <ul>
-                <li>
-                  <strong>Aritméticos:</strong>
-                  <pre style={{backgroundColor: '#f8f9fa', padding: '10px', borderRadius: '5px'}}>
-                    {`// Operaciones básicas
-      let suma = 5 + 3;      // 8
-      let resta = 10 - 4;    // 6
-      let mult = 3 * 2;      // 6
-      let div = 15 / 3;      // 5
-      let modulo = 7 % 2;    // 1 (resto)
-      let exponente = 2 ** 3;// 8 (potencia)
-      
-      // Incremento y decremento
-      let num = 5;
-      num++;                 // 6 (post-incremento)
-      ++num;                 // 7 (pre-incremento)
-      num--;                 // 6 (post-decremento)
-      --num;                 // 5 (pre-decremento)`}
-                  </pre>
-                </li>
-                <li>
-                  <strong>Comparación:</strong>
-                  <pre style={{backgroundColor: '#f8f9fa', padding: '10px', borderRadius: '5px'}}>
-                    {`// Comparaciones básicas
-      let igual = 5 === 5;       // true (igualdad estricta)
-      let noIgual = 5 !== "5";   // true (diferencia estricta)
-      let mayor = 10 > 5;        // true
-      let menor = 3 < 7;         // true
-      let mayorIgual = 5 >= 5;   // true
-      let menorIgual = 4 <= 3;   // false
-      
-      // Comparaciones no estrictas (evitar)
-      let igualDebil = 5 == "5";     // true
-      let noIgualDebil = 5 != "5";   // false`}
-                  </pre>
-                </li>
-                <li>
-                  <strong>Lógicos:</strong>
-                  <pre style={{backgroundColor: '#f8f9fa', padding: '10px', borderRadius: '5px'}}>
-                    {`// Operadores AND, OR, NOT
-      let and = true && false;   // false
-      let or = true || false;    // true
-      let not = !true;          // false
-      
-      // Encadenamiento
-      let complejo = (true && false) || (!false);  // true
-      let edad = 25;
-      let permiso = edad >= 18 && edad <= 65;      // true`}
-                  </pre>
-                </li>
-                <li>
-                  <strong>Asignación:</strong>
-                  <pre style={{backgroundColor: '#f8f9fa', padding: '10px', borderRadius: '5px'}}>
-                    {`// Asignación simple y compuesta
-      let x = 5;           // Asignación básica
-      x += 3;              // x = x + 3
-      x -= 2;              // x = x - 2
-      x *= 4;              // x = x * 4
-      x /= 2;              // x = x / 2
-      x %= 3;              // x = x % 3
-      x **= 2;             // x = x ** 2`}
-                  </pre>
-                </li>
-              </ul>
-            </div>
-      
-            <div style={{backgroundColor: '#fff3cd', padding: '15px', borderRadius: '8px', marginTop: '20px'}}>
-              <strong>Ejemplos prácticos:</strong>
-              <pre style={{backgroundColor: '#f8f9fa', padding: '10px', borderRadius: '5px', marginTop: '10px'}}>
-                {`// Ejemplo 1: Calculadora de descuento
-      let precio = 100;
-      let descuento = 0.1;  // 10%
-      let precioFinal = precio - (precio * descuento);
-      let tieneDescuento = precioFinal < precio;  // true
-      
-      // Ejemplo 2: Validación de formulario
-      let edad = 20;
-      let email = "usuario@dominio.com";
-      let password = "123456";
-      let formularioValido = 
-        edad >= 18 && 
-        email.includes("@") && 
-        password.length >= 6;
-      
-      // Ejemplo 3: Carrito de compra
-      let cantidad = 5;
-      let precioUnitario = 10;
-      let total = cantidad * precioUnitario;
-      total += (total * 0.16);  // Añadir IVA`}
-              </pre>
-            </div>
-      
-            <div style={{backgroundColor: '#f8d7da', padding: '15px', borderRadius: '8px', marginTop: '20px'}}>
-              <strong>Errores comunes:</strong>
-              <ul>
-                <li>Usar == en lugar de === para comparaciones</li>
-                <li>No considerar la precedencia de operadores</li>
-                <li>Confundir los operadores lógicos</li>
-              </ul>
-              <pre style={{backgroundColor: '#f8f9fa', padding: '10px', borderRadius: '5px', marginTop: '10px'}}>
-                {`// ❌ Error: Comparación no estricta
-      if (5 == "5") {       // ¡Cuidado! true
-        // Usar siempre ===
-      }
-      
-      // ❌ Error: Precedencia incorrecta
-      let resultado = 2 + 3 * 4;    // 14, no 20
-      // Correcto: let resultado = (2 + 3) * 4;
-      
-      // ❌ Error: Lógica incorrecta
-      if (edad < 18 && > 65) {      // Error de sintaxis
-        // Correcto: if (edad < 18 && edad > 65)
-      }
-      
-      // ❌ Error: Asignación en condicional
-      if (variable = true) {        // Asignación, no comparación
-        // Correcto: if (variable === true)
-      }`}
-              </pre>
-            </div>
-      
-            <div style={{backgroundColor: '#d4edda', padding: '15px', borderRadius: '8px', marginTop: '20px'}}>
-              <strong>Buenas prácticas:</strong>
-              <ul>
-                <li>Usar siempre === y !== para comparaciones</li>
-                <li>Utilizar paréntesis para clarificar operaciones complejas</li>
-                <li>Mantener las operaciones simples y legibles</li>
-                <li>Evitar comparaciones innecesarias con true/false</li>
-                <li>Considerar la coerción de tipos al operar</li>
-              </ul>
-              <pre style={{backgroundColor: '#f8f9fa', padding: '10px', borderRadius: '5px', marginTop: '10px'}}>
-                {`// ✅ Buenas prácticas
-      // Comparaciones estrictas
-      if (valor === null || valor === undefined) {
-        // Código seguro
-      }
-      
-      // Claridad con paréntesis
-      let complejo = (a + b) * (c + d);
-      
-      // Evitar redundancia
-      if (esValido) {  // en lugar de if (esValido === true)
-        // Código más limpio
-      }
-      
-      // Validaciones seguras
-      let numero = +"123";  // Conversión explícita a número
-      if (Number.isFinite(numero)) {
-        // Operación segura
-      }`}
-              </pre>
-            </div>
-      
-            <div style={{marginTop: '20px'}}>
-              <h4>Cuándo usar cada operador:</h4>
-              <ul>
-                <li><strong>Aritméticos (+, -, *, /):</strong> Para cálculos matemáticos básicos</li>
-                <li><strong>Módulo (%):</strong> Para obtener residuos y ciclos</li>
-                <li><strong>Comparación (===, !==, &gt;, &lt;):</strong> Para condiciones y validaciones</li>
-                <li><strong>Lógicos (&&, ||, !):</strong> Para combinar condiciones</li>
-                <li><strong>Asignación (=, +=, -=):</strong> Para asignar y modificar valores</li>
-              </ul>
-            </div>
-          </div>
-        )
+      // Tu código aquí
+    }
+    
+    console.log(puedeEntrar(20, false, false)); // true
+    console.log(puedeEntrar(15, true, false));  // true
+    console.log(puedeEntrar(15, false, false)); // false
+    console.log(puedeEntrar(15, false, true));  // true`
+          }
+        ]
       },
       funciones: {
         examples: [
